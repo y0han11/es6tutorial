@@ -884,11 +884,10 @@ BigInt 继承了 Object 对象的两个实例方法。
 
 - `BigInt.prototype.toLocaleString()`
 
-此外，还提供了三个静态方法。
+此外，还提供了两个静态方法。
 
 - `BigInt.asUintN(width, BigInt)`： 给定的 BigInt 转为 0 到 2<sup>width</sup> - 1 之间对应的值。
 - `BigInt.asIntN(width, BigInt)`：给定的 BigInt 转为 -2<sup>width - 1</sup> 到 2<sup>width - 1</sup> - 1 之间对应的值。
-- `BigInt.parseInt(string[, radix])`：近似于`Number.parseInt()`，将一个字符串转换成指定进制的 BigInt。
 
 ```javascript
 const max = 2n ** (64n - 1n) - 1n;
@@ -913,18 +912,6 @@ BigInt.asUintN(32, max) // 4294967295n
 ```
 
 上面代码中，`max`是一个64位的 BigInt，如果转为32位，前面的32位都会被舍弃。
-
-下面是`BigInt.parseInt()`的例子。
-
-```javascript
-// Number.parseInt() 与 BigInt.parseInt() 的对比
-Number.parseInt('9007199254740993', 10)
-// 9007199254740992
-BigInt.parseInt('9007199254740993', 10)
-// 9007199254740993n
-```
-
-上面代码中，由于有效数字超出了最大限度，`Number.parseInt`方法返回的结果是不精确的，而`BigInt.parseInt`方法正确返回了对应的 BigInt。
 
 对于二进制数组，BigInt 新增了两个类型`BigUint64Array`和`BigInt64Array`，这两种数据类型返回的都是64位 BigInt。`DataView`对象的实例方法`DataView.prototype.getBigInt64()`和`DataView.prototype.getBigUint64()`，返回的也是 BigInt。
 
