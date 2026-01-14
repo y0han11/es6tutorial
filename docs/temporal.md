@@ -1,12 +1,14 @@
 # Temporal API
 
-Temporal 是一个表示日期时间的全新 API，对目前的 Date API 的诸多问题进行修正。
+Temporal 是一个表示时间日期的全新 API，对目前的 Date API 的诸多问题进行修正。
 
-它有几个核心概念。
+它包含了许多与时间日期相关的工具和方法，都放在 Temporal 对象下面，实际上是一个对象形式的命名空间。
+
+Temporal API 将时间分成四种。
 
 - 当前时间：表示此时此刻的时间，位于 Temporal.now 对象。
-- 时点（instant），表示历史上某个唯一时间，其中 Temporal.Instant 对象表示时间戳，Temporal.ZonedDateTime 表示带有时区的日期时间。
-- 时钟时间（wall-clock times），表示本地时间，包含以下几个对象，不涉及时区。
+- 时点时间（instant），表示历史上某个唯一时间，其中 Temporal.Instant 对象表示时间戳，Temporal.ZonedDateTime 表示带有时区的日期时间。
+- 本地时间（wall-clock times），包含以下几个对象，不涉及时区。
     - Temporal.PlainDateTime：完整的日期和时间。
     - Temporal.PlainDate：仅限于日期。
     - Temporal.PlainYearMonth：仅限于年月。
@@ -14,9 +16,11 @@ Temporal 是一个表示日期时间的全新 API，对目前的 Date API 的诸
     - Temporal.PlainTime：不包含日期的时间。
 - 持续时间（durations），表示两个时间点之间的差异，位于 Temporal.Duration 对象。
 
+下面逐一介绍这些对象。
+
 ## Temporal.Now
 
-`Temporal.Now`表示当前系统的准确时间。
+`Temporal.Now`对象表示当前系统的准确时间，也就是现在的时间。
 
 - Temporal.Now.instant()- 获取当前系统准确时间
 - Temporal.Now.timeZoneId()- 获取当前系统时区
