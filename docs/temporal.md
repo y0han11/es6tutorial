@@ -66,6 +66,8 @@ const currentYear = Temporal.Now.plainDateISO().withCalendar("chinese").year;
 
 `Temporal.Instant`表示某个固定的时点。
 
+Temporal.Instant.from() 方法用来新建时点实例。
+
 ```javascript
 const instant = Temporal.Instant.from('1969-07-20T20:17Z');
 instant.toString(); // => '1969-07-20T20:17:00Z'
@@ -75,6 +77,23 @@ instant.epochMilliseconds; // => -14182980000
 const launch = Temporal.Instant.fromEpochMilliseconds(1851222399924);
 const now = Temporal.Now.instant();
 const duration = now.until(launch, { smallestUnit: "hour" });
+```
+
+时点实例有以下方法：
+
+- toZonedDateTimeISO()：返回指定时区的时间。
+
+```javascript
+const instant = Temporal.Instant.from("2026-02-25T15:15:00Z");
+
+instant.toString() 
+// "2026-02-25T15:15:00Z"
+
+instant.toZonedDateTimeISO("Europe/London").toString()
+// "2026-02-25T15:15:00+00:00[Europe/London]"
+
+instant.toZonedDateTimeISO("America/New_York").toString()
+// "2026-02-25T10:15:00-05:00[America/New_York]"
 ```
 
 ## Temporal.ZonedDateTime
@@ -104,6 +123,17 @@ const zonedDateTime = Temporal.ZonedDateTime.from({
   microsecond: 3,
   nanosecond: 500
 }); // => 1995-12-07T03:24:30.0000035-08:00[America/Los_Angeles]
+```
+
+Temporal.ZonedDateTime.from() 也可以解析时间字符串。
+
+```javascript
+const zdt = Temporal.ZonedDateTime.from(
+  "2026-03-29T00:30:00+00:00[Europe/London]",
+);
+
+console.log(zdt.toString());
+// "2026-03-29T00:30:00+00:00[Europe/London]"
 ```
 
 下面是使用`Temporal.ZonedDateTime.compare()`比较两个 ZonedDateTime 实例对象的例子。
