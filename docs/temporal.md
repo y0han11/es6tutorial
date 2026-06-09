@@ -6,7 +6,7 @@ Temporal 是一个表示时间日期的全新 API，对目前的 Date API 的诸
 
 Temporal API 将时间分成四种。
 
-- 当前时间：表示此时此刻的时间，位于 Temporal.now 对象。
+- 当前时间：表示此时此刻的时间，位于 Temporal.Now 对象。
 - 时点时间（instant），表示历史上某个唯一时间，其中 Temporal.Instant 对象表示时间戳，Temporal.ZonedDateTime 表示带有时区的日期时间。
 - 本地时间（wall-clock times），包含以下几个对象，不涉及时区。
     - Temporal.PlainDateTime：完整的日期和时间。
@@ -226,7 +226,8 @@ const time = Temporal.PlainTime.from({
   millisecond: 68,
   microsecond: 346,
   nanosecond: 205
-}); // => 19:39:09.068346205time.second; // => 9
+}); // => 19:39:09.068346205
+time.second; // => 9
 time.toString(); // => '19:39:09.068346205'
 ```
 
